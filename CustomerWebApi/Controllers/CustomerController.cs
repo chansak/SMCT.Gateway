@@ -20,17 +20,7 @@ namespace CustomerWebApi.Controllers
         [Authorize]
         public ActionResult<IEnumerable<Customer>> GetCustomers()
         {
-            //return _customerDbContext.Customers;
-            //mockup customer
-            var customers= new List<Customer>();
-            customers.Add(new Customer
-            {
-                CustomerId = 1,
-                CustomerName = "test",
-                MobileNumber = "+12 3456789",
-                Email = "test@test.com"
-            });
-            return customers;
+            return _customerDbContext.Customers;
         }
 
         [HttpGet("{customerId:int}")]

@@ -27,7 +27,7 @@ namespace JwtAuthenticationManager
             var tokenExpiryTimeStamp = DateTime.Now.AddMinutes(JWT_TOKEN_VALIDITY_MINS);
             return new AuthenticationResponse
             {
-                //IdentityId = authenticationRequest.IdentityId,
+                Id = string.Format("{0}-{1}",authenticationRequest.clientId,Guid.NewGuid()),
                 ExpiresIn = (int)tokenExpiryTimeStamp.Subtract(DateTime.Now).TotalSeconds,
                 Token = GetAccessToken(authenticationRequest.clientId,authenticationRequest.clientSecret).Result.AccessToken.ToString()
             };
